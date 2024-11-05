@@ -70,3 +70,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+#Artifacts
+ArtifactDB
+ArtifactDB-lock
+/3DActionRoguelike/Library/Artifacts
+/3DActionRoguelike/Library/BurstCache
+/3DActionRoguelike/Logs
+/3DActionRoguelike/Temp
