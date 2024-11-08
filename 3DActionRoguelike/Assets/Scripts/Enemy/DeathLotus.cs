@@ -63,10 +63,6 @@ public class DeathLotus : SkillBase
                 _throwing = true;
                 StartCoroutine(ThrowKnife());
             }
-            else
-            {
-                _throwing = false;
-            }
         
             if (_duration >= _maxDuration)
             {
@@ -87,6 +83,9 @@ public class DeathLotus : SkillBase
     {
         if (_casted&&(interrupted || _finised)&&!_isCooldown)
         {
+            
+            Debug.Log("Here and true");
+
             _isCooldown = true;
             Cooldown();
         }
@@ -123,7 +122,7 @@ public class DeathLotus : SkillBase
         {
             foreach (var en in enemies)
             {
-                if (en.gameObject != null)
+                if (en != null)
                 {
                     SpawnBlade(en.gameObject);
                     en.gameObject.SendMessage("GetDamage", _damagePerKnife);
@@ -133,6 +132,7 @@ public class DeathLotus : SkillBase
             }
         }
         _canThrow = true;
+        _throwing = false;
     }
     
     private void SpawnBlade(GameObject enemy)
@@ -151,6 +151,7 @@ public class DeathLotus : SkillBase
         if (!interrupted)
         {
             interrupted = true;
+            _throwing = false;
             Cooldown();
         }
     }
@@ -172,7 +173,7 @@ public class DeathLotus : SkillBase
     {
         _startTime = Time.time;
         yield return new WaitForSeconds(_cooldownTimer);
-        Debug.Log("Corutine Ended");
+        Debug.Log("Corutine Ended" + _throwing);
         ResetVariabels();
     }
 
@@ -202,6 +203,7 @@ public class DeathLotus : SkillBase
 
     private void WaitEnd()
     {
+        Debug.Log("Wait End");
         ResetVariabels();
     }
     

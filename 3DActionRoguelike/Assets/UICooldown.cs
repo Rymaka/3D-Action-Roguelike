@@ -15,7 +15,7 @@ public class UICooldown : MonoBehaviour
 
     private void Start()
     {
-        _cooldownOrig = _skill._cooldown;
+        _cooldownOrig = _skill.cooldown;
         _originalPosition = _cooldownIcon.anchoredPosition;
     }
 

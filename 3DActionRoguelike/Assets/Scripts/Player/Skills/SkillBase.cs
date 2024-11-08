@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 
 public class SkillBase : MonoBehaviour
 {
-    [SerializeField] public float _cooldown;
+    [SerializeField] protected float _cooldown;
+    [SerializeField] public float cooldown;
     [SerializeField] protected bool _canCast = true;
     [SerializeField] private InputActionReference _inputAction;
     [SerializeField] protected bool _casted = false;
@@ -21,6 +22,7 @@ public class SkillBase : MonoBehaviour
 
     private void Awake()
     {
+        cooldown = _cooldown;
         OnAwake();
     }
 
