@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 
 public class SkillBase : MonoBehaviour
 {
-    [SerializeField] protected float _cooldown;
+    [SerializeField] public float _cooldown;
     [SerializeField] protected bool _canCast = true;
     [SerializeField] private InputActionReference _inputAction;
     [SerializeField] protected bool _casted = false;
+    [SerializeField] protected UICooldown _uiElement;
     protected float _startTime = 0f;
 
     protected virtual void OnAwake()
@@ -58,6 +59,11 @@ public class SkillBase : MonoBehaviour
 
     protected virtual IEnumerator CooldownTimer()
     {
+
+        if (_uiElement != null)
+        {
+            _uiElement.StartCooldown(_cooldown);
+        }
         _startTime = Time.time;
         yield return new WaitForSeconds(_cooldown);
         _canCast = true;

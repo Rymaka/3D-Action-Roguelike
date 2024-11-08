@@ -57,6 +57,7 @@ public class BouncingBlade : SkillBase
 
     protected override IEnumerator CooldownTimer()
     {
+        _uiElement.StartCooldown(_cooldownTimer);
         _startTime = Time.time;
         yield return new WaitForSeconds(_cooldown);
         ResetVariabels();
@@ -89,10 +90,12 @@ public class BouncingBlade : SkillBase
         if (_cooldownTimer > 0)
         {
             StartCoroutine(CooldownTimer());
+            _uiElement.StartCooldown(_cooldownTimer);
         }
         else
         {
             ResetVariabels();
+            _uiElement.ResetUI();
         }
     }
     
