@@ -59,7 +59,7 @@ public class BouncingBlade : SkillBase
     {
         _uiElement.StartCooldown(_cooldownTimer);
         _startTime = Time.time;
-        Debug.Log(_cooldownTimer + " " + _cooldown);
+        Debug.Log(_cooldownTimer + " " + _cooldown + " corutine");
         yield return new WaitForSeconds(_cooldownTimer);
         ResetVariabels();
     }
@@ -71,6 +71,8 @@ public class BouncingBlade : SkillBase
         _elapsedTime = 0f;
         _canCast = true;
         _casted = false;
+        _uiElement.ResetUI();
+        StopAllCoroutines();
     }
     private void SpawnBlade(GameObject enemy)
     {
@@ -96,7 +98,6 @@ public class BouncingBlade : SkillBase
         else
         {
             ResetVariabels();
-            _uiElement.ResetUI();
         }
     }
     

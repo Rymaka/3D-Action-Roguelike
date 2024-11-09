@@ -56,10 +56,9 @@ public class UICooldown : MonoBehaviour
         _cooldownOrig = _skill._cooldown;
         _cooldownTimer = cooldownTimer;
         float cooldownProcent = 1f;
-        Debug.Log(_cooldownTimer + " seconds");
         if (_onCooldown)
         {
-            StopCoroutine(CooldownTimer());
+            StopAllCoroutines();
             _onCooldown = false;
         }
         
@@ -68,13 +67,11 @@ public class UICooldown : MonoBehaviour
             cooldownProcent = _cooldownTimer / _cooldownOrig;
         }
 
-        Debug.Log(_cooldownTimer + " cooldown " + _cooldownOrig + " orig" + cooldownProcent + " procent" );
         float startPercent = 1f - cooldownProcent;
         
         _elapsedCooldownTime = startPercent * _cooldownOrig;
         MoveToProcent(startPercent);
 
-        Debug.Log(_elapsedCooldownTime + " elapsedCooldownTime " + cooldownProcent + " procent");
         
         _onCooldown = true;
         _animating = false;
@@ -97,13 +94,14 @@ public class UICooldown : MonoBehaviour
 
     private IEnumerator CooldownTimer()
     {
+        Debug.Log("coroitne Started " + _cooldownTimer);
         yield return new WaitForSeconds(_cooldownTimer);
         ResetUI();
     }
 
     public void ResetUI()
     {
-        StopCoroutine(CooldownTimer());
+        StopAllCoroutines();
         _cooldownIcon.anchoredPosition = new Vector2(_originalPosition.x, _endPosition);
         _onCooldown = false;
         _animating = false;

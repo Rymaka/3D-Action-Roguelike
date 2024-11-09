@@ -173,7 +173,7 @@ public class DeathLotus : SkillBase
     {
         _startTime = Time.time;
         yield return new WaitForSeconds(_cooldownTimer);
-        Debug.Log("Corutine Ended" + _throwing);
+        //Debug.Log("Corutine Ended" + _throwing);
         ResetVariabels();
     }
 
