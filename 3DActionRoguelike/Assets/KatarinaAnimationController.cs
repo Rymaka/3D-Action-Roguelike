@@ -150,6 +150,11 @@ public class KatarinaAnimationController : MonoBehaviour
         _idleCorutineRunning = false;
     }
 
+    public void BouncingBladeAnimation()
+    {
+        _anim.SetLayerWeight (_voracityLayer, 1f);
+        _anim.SetTrigger("QSkill");
+    }
     public void VoracityAnimation()
     {
         _anim.SetLayerWeight (_voracityLayer, 1f);

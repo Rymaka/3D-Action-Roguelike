@@ -21,6 +21,7 @@ public class BouncingBlade : SkillBase
     [SerializeField] private float _fallingHeight = 1.3f;
     [SerializeField] private float _fallingDuration = 1.3f;
     [SerializeField] private float _cooldownReduce = 15f;
+    [SerializeField] private KatarinaAnimationController _anim;
     private float _elapsedTime = 0f;
     private float _cooldownTimer = 0f;
 
@@ -46,9 +47,10 @@ public class BouncingBlade : SkillBase
 
         if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, _skillRadius, ~_ignoreMask))
         {
-            _casted = true;
+
             if (hit.collider.CompareTag("Enemy"))
             {
+                _anim.BouncingBladeAnimation();
                 SpawnBlade(hit.collider.gameObject);
                 _casted = true;
             }

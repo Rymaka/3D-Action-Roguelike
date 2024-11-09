@@ -2452,7 +2452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 899, y: -468}
+  m_AnchoredPosition: {x: 891, y: -482}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &671519824
@@ -4406,7 +4406,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.042193014, y: -0.22924975, z: -0.2319191, w: 0.9443929}
   m_LocalPosition: {x: 17.96, y: -17.61, z: 22.76}
-  m_LocalScale: {x: 11.469565, y: 7.1479793, z: 6.3690567}
+  m_LocalScale: {x: 12.1852665, y: 7.674785, z: 6.900236}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 274934871}
@@ -5977,8 +5977,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7179018895077883837, guid: 2ac8dd657715fd9428f079dc67b09f83, type: 3}
+      propertyPath: _anim
+      value: 
+      objectReference: {fileID: 7042802599126892902}
+    - target: {fileID: 7179018895077883837, guid: 2ac8dd657715fd9428f079dc67b09f83, type: 3}
       propertyPath: _cooldown
-      value: 22
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7179018895077883837, guid: 2ac8dd657715fd9428f079dc67b09f83, type: 3}
       propertyPath: _uiElement
@@ -6002,6 +6006,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31cbd6a726c70a348b2e5551789ffbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7042802599126892902 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8136343002174810119, guid: 2ac8dd657715fd9428f079dc67b09f83, type: 3}
+  m_PrefabInstance: {fileID: 7042802599126892899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9618cb30f8a07584e812e445f0045a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &9071448854611660413
