@@ -15,7 +15,7 @@ public class UICooldown : MonoBehaviour
 
     private void Start()
     {
-        _cooldownOrig = _skill.cooldown;
+        _cooldownOrig = _skill._cooldown;
         _originalPosition = _cooldownIcon.anchoredPosition;
     }
 
@@ -33,18 +33,19 @@ public class UICooldown : MonoBehaviour
 
     private void AnimateCooldown()
     {
+
         if (!_animating)
         {
             _animating = true;
         }
 
         _elapsedCooldownTime += Time.deltaTime;
-        Debug.Log(_elapsedCooldownTime+ " elapsedCooldownTime " + _cooldownTimer + " cooldown " );
-        float cooldownPercent = Mathf.Clamp01(_elapsedCooldownTime / _cooldownTimer);
+        //Debug.Log(_elapsedCooldownTime+ " elapsedCooldownTime " + _cooldownTimer + " cooldown " );
+        float cooldownPercent = Mathf.Clamp01(_elapsedCooldownTime / _cooldownOrig);
         float newYPosition = Mathf.Lerp(_originalPosition.y, _endPosition, cooldownPercent);
         _cooldownIcon.anchoredPosition = new Vector2(_originalPosition.x, newYPosition);
 
-        if (_elapsedCooldownTime >= _cooldownTimer)
+        if (_elapsedCooldownTime >= _cooldownOrig)
         {
             ResetUI();
         }
@@ -52,6 +53,7 @@ public class UICooldown : MonoBehaviour
 
     public void StartCooldown(float cooldownTimer)
     {
+        _cooldownOrig = _skill._cooldown;
         _cooldownTimer = cooldownTimer;
         float cooldownProcent = 1f;
         Debug.Log(_cooldownTimer + " seconds");
@@ -66,11 +68,13 @@ public class UICooldown : MonoBehaviour
             cooldownProcent = _cooldownTimer / _cooldownOrig;
         }
 
+        Debug.Log(_cooldownTimer + " cooldown " + _cooldownOrig + " orig" + cooldownProcent + " procent" );
         float startPercent = 1f - cooldownProcent;
-        MoveToProcent(startPercent);
         
-        _elapsedCooldownTime = startPercent * _cooldownTimer;
-        Debug.Log(_elapsedCooldownTime + " elapsedCooldownTime");
+        _elapsedCooldownTime = startPercent * _cooldownOrig;
+        MoveToProcent(startPercent);
+
+        Debug.Log(_elapsedCooldownTime + " elapsedCooldownTime " + cooldownProcent + " procent");
         
         _onCooldown = true;
         _animating = false;

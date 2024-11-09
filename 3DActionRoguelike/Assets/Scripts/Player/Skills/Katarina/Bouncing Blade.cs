@@ -59,7 +59,8 @@ public class BouncingBlade : SkillBase
     {
         _uiElement.StartCooldown(_cooldownTimer);
         _startTime = Time.time;
-        yield return new WaitForSeconds(_cooldown);
+        Debug.Log(_cooldownTimer + " " + _cooldown);
+        yield return new WaitForSeconds(_cooldownTimer);
         ResetVariabels();
     }
 
